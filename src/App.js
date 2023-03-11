@@ -1,22 +1,44 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import video from "./640x640.mp4";
+import largeVideo from "./640x640.mp4";
+import smallVideo from "./300x300.mp4";
 
-function App() {
+const App = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
+
   return (
     <div className="App">
-      <video
-        autoplay=""
-        loop="loop"
-        id="video-background-7608"
-        muted="muted"
-        plays-inline=""
-        poster=""
-      >
-        <source src={video} type="video/mp4" />
-      </video>
+      {windowWidth >= 640 && (
+        <>
+          <p>window width: {windowWidth}</p>
+          <video autoplay="" loop="loop" muted="muted" plays-inline="">
+            <source src={largeVideo} type="video/mp4" />
+          </video>
+        </>
+      )}
+      {windowWidth < 640 && (
+        <>
+          <p>window width: {windowWidth}</p>
+          <video autoplay="" loop="loop" muted="muted" plays-inline="">
+            <source src={smallVideo} type="video/mp4" />
+          </video>
+        </>
+      )}
 
-      <h1 >ai-able</h1>
-      <p>Build the habit of using AI</p>
+      <h1 className="Header">ai-able</h1>
+      <p className="Subtext">Build the habit of using AI</p>
       <a
         className="App-link"
         href="https://chrome.google.com/webstore/category/extensions"
@@ -27,6 +49,6 @@ function App() {
       </a>
     </div>
   );
-}
+};
 
 export default App;
