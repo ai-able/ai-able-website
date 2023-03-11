@@ -23,7 +23,6 @@ const App = () => {
     <div className="App">
       {windowWidth >= 640 && (
         <>
-          <p>window width: </p>
           <video autoplay="" loop="loop" muted="muted" plays-inline="">
             <source src={largeVideo} type="video/mp4" />
           </video>
