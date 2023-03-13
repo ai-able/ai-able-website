@@ -10,7 +10,6 @@ Color Palette:
 body {
   margin: auto;
   text-align: center;
-
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -31,6 +30,7 @@ body {
 }
 
 .Header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 36px;
   margin: auto;
   text-align: center;
